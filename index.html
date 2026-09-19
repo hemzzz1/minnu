@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A HEMALATHA | Ocean Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --ocean-dark: #021b2e;
+      --ocean: #043b5c;
+      --blue: #087ea4;
+      --cyan: #35d6e8;
+      --light: #dffcff;
+      --glass: rgba(255, 255, 255, 0.09);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--light);
+      background: var(--ocean-dark);
+      overflow-x: hidden;
+    }
+
+    /* OCEAN BACKGROUND */
+
+    .ocean {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 20%, #075278 0%, transparent 28%),
+        radial-gradient(circle at 80% 70%, #05647d 0%, transparent 25%),
+        linear-gradient(180deg, #021522, #043b5c 55%, #021b2e);
+    }
+
+    /* Floating bubbles */
+
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      width: 18px;
+      height: 18px;
+      border: 1px solid rgba(255,255,255,0.45);
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      box-shadow: inset 2px 2px 5px rgba(255,255,255,0.3);
+      animation: rise 12s infinite ease-in;
+      pointer-events: none;
+    }
+
+    .bubble:nth-child(1) {
+      left: 8%;
+      animation-delay: 1s;
+      animation-duration: 10s;
+    }
+
+    .bubble:nth-child(2) {
+      left: 20%;
+      width: 10px;
+      height: 10px;
+      animation-delay: 4s;
+      animation-duration: 14s;
+    }
+
+    .bubble:nth-child(3) {
+      left: 35%;
+      width: 25px;
+      height: 25px;
+      animation-delay: 2s;
+      animation-duration: 12s;
+    }
+
+    .bubble:nth-child(4) {
+      left: 52%;
+      width: 12px;
+      height: 12px;
+      animation-delay: 6s;
+      animation-duration: 11s;
+    }
+
+    .bubble:nth-child(5) {
+      left: 68%;
+      width: 22px;
+      height: 22px;
+      animation-delay: 3s;
+      animation-duration: 15s;
+    }
+
+    .bubble:nth-child(6) {
+      left: 84%;
+      width: 14px;
+      height: 14px;
+      animation-delay: 7s;
+      animation-duration: 10s;
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translateY(0) translateX(0) scale(0.6);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 0.8;
+      }
+
+      50% {
+        transform: translateY(-50vh) translateX(25px) scale(1);
+      }
+
+      100% {
+        transform: translateY(-115vh) translateX(-25px) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 50px 20px 160px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 5;
+      max-width: 850px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 9px 20px;
+      border: 1px solid rgba(53,214,232,0.7);
+      border-radius: 50px;
+      color: var(--cyan);
+      background: rgba(0,0,0,0.15);
+      backdrop-filter: blur(8px);
+      letter-spacing: 2px;
+      font-size: 0.8rem;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.2rem, 12vw, 8rem);
+      line-height: 0.95;
+      letter-spacing: 4px;
+      margin-bottom: 28px;
+      text-shadow: 0 0 30px rgba(53,214,232,0.3);
+    }
+
+    .hero h1 span {
+      color: var(--cyan);
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: auto;
+      color: #c5edf2;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      line-height: 1.8;
+    }
+
+    .explore {
+      display: inline-block;
+      margin-top: 35px;
+      padding: 14px 30px;
+      border: 1px solid var(--cyan);
+      border-radius: 50px;
+      color: white;
+      text-decoration: none;
+      background: rgba(53,214,232,0.08);
+      transition: 0.3s ease;
+    }
+
+    .explore:hover {
+      background: var(--cyan);
+      color: #021b2e;
+      box-shadow: 0 0 30px rgba(53,214,232,0.5);
+    }
+
+    /* MOVING WAVES */
+
+    .waves {
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 200%;
+      height: 150px;
+      display: flex;
+      align-items: flex-end;
+      animation: waveMove 12s linear infinite;
+    }
+
+    .wave {
+      width: 50%;
+      height: 120px;
+      background: #021b2e;
+      border-radius: 50% 50% 0 0 / 35% 35% 0 0;
+      transform: translateY(30px);
+    }
+
+    .wave:nth-child(2) {
+      transform: translateY(45px);
+      opacity: 0.8;
+    }
+
+    @keyframes waveMove {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* SKILLS */
+
+    .skills {
+      position: relative;
+      padding: 100px 20px;
+      background: #021b2e;
+      overflow: hidden;
+    }
+
+    .container {
+      width: min(1050px, 90%);
+      margin: auto;
+      position: relative;
+      z-index: 3;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 55px;
+    }
+
+    .section-title span {
+      color: var(--cyan);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .skill-card {
+      padding: 38px 20px;
+      text-align: center;
+      border: 1px solid rgba(53,214,232,0.3);
+      border-radius: 20px;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      transition: 0.35s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--cyan);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+
+    .skill-icon {
+      font-size: 2.7rem;
+      margin-bottom: 15px;
+    }
+
+    .skill-card h3 {
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .skill-card p {
+      margin-top: 7px;
+      color: #91cbd4;
+      font-size: 0.85rem;
+    }
+
+    /* FOOTER */
+
+    footer {
+      position: relative;
+      padding: 90px 20px;
+      text-align: center;
+      background: linear-gradient(#021b2e, #010d18);
+      overflow: hidden;
+    }
+
+    footer h2 {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+      color: var(--cyan);
+    }
+
+    footer p {
+      color: #9fcbd2;
+      margin-bottom: 28px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      min-width: 130px;
+      padding: 13px 25px;
+      border: 1px solid rgba(53,214,232,0.6);
+      border-radius: 50px;
+      color: white;
+      text-decoration: none;
+      background: rgba(255,255,255,0.04);
+      transition: 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--cyan);
+      color: #021b2e;
+      box-shadow: 0 0 25px rgba(53,214,232,0.5);
+    }
+
+    .copyright {
+      margin-top: 40px;
+      font-size: 0.8rem;
+      color: #52727a;
+    }
+
+    /* TOUCH BUBBLE EFFECT */
+
+    .touch-bubble {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border: 2px solid rgba(53,214,232,0.7);
+      border-radius: 50%;
+      left: 50%;
+      top: 50%;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.3);
+      pointer-events: none;
+    }
+
+    .ocean:active .touch-bubble {
+      animation: touchRipple 1s ease-out;
+    }
+
+    @keyframes touchRipple {
+      0% {
+        opacity: 0.9;
+        transform: translate(-50%, -50%) scale(0.3);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(4);
+      }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero {
+        padding-bottom: 130px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .hero h1 {
+        font-size: 3rem;
+        letter-spacing: 1px;
+      }
+
+      .hero p {
+        font-size: 0.95rem;
+      }
+
+      .skills {
+        padding: 75px 15px;
+      }
+
+      .section-title {
+        font-size: 2.2rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skill-card {
+        padding: 30px 20px;
+      }
+
+      footer h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="ocean">
+
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <div class="touch-bubble"></div>
+
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <div class="tag">COMPUTER SCIENCE STUDENT</div>
+
+        <h1>A <span>HEMALATHA</span></h1>
+
+        <p>
+          Computer Science student at Sri Ramakrishna College of Arts and Science,
+          passionate about software development and problem-solving.
+        </p>
+
+        <a href="#skills" class="explore">Dive Into My World</a>
+
+      </div>
+
+      <div class="waves">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+      </div>
+
+    </section>
+
+  </div>
+
+
+  <section class="skills" id="skills">
+
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <div class="container">
+
+      <h2 class="section-title">
+        My <span>Creative Skills</span>
+      </h2>
+
+      <div class="skills-grid">
+
+        <div class="skill-card">
+          <div class="skill-icon">🎤</div>
+          <h3>Singing</h3>
+          <p>Voice &amp; Musical Expression</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">💃</div>
+          <h3>Dancing</h3>
+          <p>Movement &amp; Performance</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🎨</div>
+          <h3>Drawing</h3>
+          <p>Creativity &amp; Visual Art</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">✂️</div>
+          <h3>Editing</h3>
+          <p>Creative Digital Editing</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <div class="container">
+
+      <h2>Connect with Me</h2>
+
+      <p>
+        Let's connect and explore creativity, technology and ideas together.
+      </p>
+
+      <div class="social-links">
+        <a href="#" aria-label="GitHub">GitHub</a>
+        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+      </div>
+
+      <p class="copyright">
+        © 2026 A HEMALATHA. All rights reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
