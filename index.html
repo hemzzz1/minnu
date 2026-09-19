@@ -1,537 +1,631 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A HEMALATHA | Ocean Portfolio</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --ocean-dark: #021b2e;
-      --ocean: #043b5c;
-      --blue: #087ea4;
-      --cyan: #35d6e8;
-      --light: #dffcff;
-      --glass: rgba(255, 255, 255, 0.09);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--light);
-      background: var(--ocean-dark);
-      overflow-x: hidden;
-    }
-
-    /* OCEAN BACKGROUND */
-
-    .ocean {
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 20% 20%, #075278 0%, transparent 28%),
-        radial-gradient(circle at 80% 70%, #05647d 0%, transparent 25%),
-        linear-gradient(180deg, #021522, #043b5c 55%, #021b2e);
-    }
-
-    /* Floating bubbles */
-
-    .bubble {
-      position: absolute;
-      bottom: -100px;
-      width: 18px;
-      height: 18px;
-      border: 1px solid rgba(255,255,255,0.45);
-      border-radius: 50%;
-      background: rgba(255,255,255,0.08);
-      box-shadow: inset 2px 2px 5px rgba(255,255,255,0.3);
-      animation: rise 12s infinite ease-in;
-      pointer-events: none;
-    }
-
-    .bubble:nth-child(1) {
-      left: 8%;
-      animation-delay: 1s;
-      animation-duration: 10s;
-    }
-
-    .bubble:nth-child(2) {
-      left: 20%;
-      width: 10px;
-      height: 10px;
-      animation-delay: 4s;
-      animation-duration: 14s;
-    }
-
-    .bubble:nth-child(3) {
-      left: 35%;
-      width: 25px;
-      height: 25px;
-      animation-delay: 2s;
-      animation-duration: 12s;
-    }
-
-    .bubble:nth-child(4) {
-      left: 52%;
-      width: 12px;
-      height: 12px;
-      animation-delay: 6s;
-      animation-duration: 11s;
-    }
-
-    .bubble:nth-child(5) {
-      left: 68%;
-      width: 22px;
-      height: 22px;
-      animation-delay: 3s;
-      animation-duration: 15s;
-    }
-
-    .bubble:nth-child(6) {
-      left: 84%;
-      width: 14px;
-      height: 14px;
-      animation-delay: 7s;
-      animation-duration: 10s;
-    }
-
-    @keyframes rise {
-      0% {
-        transform: translateY(0) translateX(0) scale(0.6);
-        opacity: 0;
-      }
-
-      15% {
-        opacity: 0.8;
-      }
-
-      50% {
-        transform: translateY(-50vh) translateX(25px) scale(1);
-      }
-
-      100% {
-        transform: translateY(-115vh) translateX(-25px) scale(1.2);
-        opacity: 0;
-      }
-    }
-
-    /* HERO */
-
-    .hero {
-      min-height: 100vh;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 50px 20px 160px;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 5;
-      max-width: 850px;
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 9px 20px;
-      border: 1px solid rgba(53,214,232,0.7);
-      border-radius: 50px;
-      color: var(--cyan);
-      background: rgba(0,0,0,0.15);
-      backdrop-filter: blur(8px);
-      letter-spacing: 2px;
-      font-size: 0.8rem;
-      margin-bottom: 25px;
-    }
-
-    .hero h1 {
-      font-size: clamp(3.2rem, 12vw, 8rem);
-      line-height: 0.95;
-      letter-spacing: 4px;
-      margin-bottom: 28px;
-      text-shadow: 0 0 30px rgba(53,214,232,0.3);
-    }
-
-    .hero h1 span {
-      color: var(--cyan);
-    }
-
-    .hero p {
-      max-width: 720px;
-      margin: auto;
-      color: #c5edf2;
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      line-height: 1.8;
-    }
-
-    .explore {
-      display: inline-block;
-      margin-top: 35px;
-      padding: 14px 30px;
-      border: 1px solid var(--cyan);
-      border-radius: 50px;
-      color: white;
-      text-decoration: none;
-      background: rgba(53,214,232,0.08);
-      transition: 0.3s ease;
-    }
-
-    .explore:hover {
-      background: var(--cyan);
-      color: #021b2e;
-      box-shadow: 0 0 30px rgba(53,214,232,0.5);
-    }
-
-    /* MOVING WAVES */
-
-    .waves {
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 200%;
-      height: 150px;
-      display: flex;
-      align-items: flex-end;
-      animation: waveMove 12s linear infinite;
-    }
-
-    .wave {
-      width: 50%;
-      height: 120px;
-      background: #021b2e;
-      border-radius: 50% 50% 0 0 / 35% 35% 0 0;
-      transform: translateY(30px);
-    }
-
-    .wave:nth-child(2) {
-      transform: translateY(45px);
-      opacity: 0.8;
-    }
-
-    @keyframes waveMove {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
-    /* SKILLS */
-
-    .skills {
-      position: relative;
-      padding: 100px 20px;
-      background: #021b2e;
-      overflow: hidden;
-    }
-
-    .container {
-      width: min(1050px, 90%);
-      margin: auto;
-      position: relative;
-      z-index: 3;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2.8rem;
-      margin-bottom: 55px;
-    }
-
-    .section-title span {
-      color: var(--cyan);
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
-    }
-
-    .skill-card {
-      padding: 38px 20px;
-      text-align: center;
-      border: 1px solid rgba(53,214,232,0.3);
-      border-radius: 20px;
-      background: var(--glass);
-      backdrop-filter: blur(12px);
-      transition: 0.35s ease;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-10px);
-      border-color: var(--cyan);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-    }
-
-    .skill-icon {
-      font-size: 2.7rem;
-      margin-bottom: 15px;
-    }
-
-    .skill-card h3 {
-      color: white;
-      font-size: 1.2rem;
-    }
-
-    .skill-card p {
-      margin-top: 7px;
-      color: #91cbd4;
-      font-size: 0.85rem;
-    }
-
-    /* FOOTER */
-
-    footer {
-      position: relative;
-      padding: 90px 20px;
-      text-align: center;
-      background: linear-gradient(#021b2e, #010d18);
-      overflow: hidden;
-    }
-
-    footer h2 {
-      font-size: 2.5rem;
-      margin-bottom: 12px;
-      color: var(--cyan);
-    }
-
-    footer p {
-      color: #9fcbd2;
-      margin-bottom: 28px;
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .social-links a {
-      min-width: 130px;
-      padding: 13px 25px;
-      border: 1px solid rgba(53,214,232,0.6);
-      border-radius: 50px;
-      color: white;
-      text-decoration: none;
-      background: rgba(255,255,255,0.04);
-      transition: 0.3s ease;
-    }
-
-    .social-links a:hover {
-      background: var(--cyan);
-      color: #021b2e;
-      box-shadow: 0 0 25px rgba(53,214,232,0.5);
-    }
-
-    .copyright {
-      margin-top: 40px;
-      font-size: 0.8rem;
-      color: #52727a;
-    }
-
-    /* TOUCH BUBBLE EFFECT */
-
-    .touch-bubble {
-      position: absolute;
-      width: 70px;
-      height: 70px;
-      border: 2px solid rgba(53,214,232,0.7);
-      border-radius: 50%;
-      left: 50%;
-      top: 50%;
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.3);
-      pointer-events: none;
-    }
-
-    .ocean:active .touch-bubble {
-      animation: touchRipple 1s ease-out;
-    }
-
-    @keyframes touchRipple {
-      0% {
-        opacity: 0.9;
-        transform: translate(-50%, -50%) scale(0.3);
-      }
-
-      100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(4);
-      }
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 800px) {
-      .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .hero {
-        padding-bottom: 130px;
-      }
-    }
-
-    @media (max-width: 500px) {
-      .hero h1 {
-        font-size: 3rem;
-        letter-spacing: 1px;
-      }
-
-      .hero p {
-        font-size: 0.95rem;
-      }
-
-      .skills {
-        padding: 75px 15px;
-      }
-
-      .section-title {
-        font-size: 2.2rem;
-      }
-
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .skill-card {
-        padding: 30px 20px;
-      }
-
-      footer h2 {
-        font-size: 2rem;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A HEMALATHA | Ocean Portfolio</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --ocean-1: #020b20;
+  --ocean-2: #032d58;
+  --ocean-3: #006b9c;
+  --cyan: #59eaff;
+  --blue: #169ee8;
+  --white: #ecfbff;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--white);
+  background: var(--ocean-1);
+  overflow-x: hidden;
+}
+
+/* ---------- OCEAN BACKGROUND ---------- */
+
+.ocean {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 0%, #0b8fc7 0%, transparent 35%),
+    radial-gradient(circle at 20% 70%, #063d68 0%, transparent 35%),
+    linear-gradient(#02152f, #003f67 55%, #010c20);
+}
+
+.ocean::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-radial-gradient(
+      ellipse at 50% 0%,
+      transparent 0 70px,
+      rgba(100, 235, 255, .07) 72px 74px,
+      transparent 76px 120px
+    );
+  animation: waterPulse 8s ease-in-out infinite;
+}
+
+.ocean::after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  left: 50%;
+  top: -100px;
+  transform: translateX(-50%);
+  background: rgba(150, 245, 255, .18);
+  filter: blur(60px);
+  animation: sunlight 5s ease-in-out infinite alternate;
+}
+
+@keyframes waterPulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+@keyframes sunlight {
+  from { opacity: .35; }
+  to { opacity: .8; }
+}
+
+/* ---------- LIGHT RAYS ---------- */
+
+.ray {
+  position: fixed;
+  top: -10%;
+  width: 100px;
+  height: 120%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(122, 239, 255, .09),
+    transparent
+  );
+  transform: rotate(12deg);
+  filter: blur(12px);
+  z-index: -5;
+  pointer-events: none;
+}
+
+.ray:nth-child(1) {
+  left: 8%;
+  animation: rayMove 8s infinite alternate;
+}
+
+.ray:nth-child(2) {
+  left: 35%;
+  transform: rotate(-8deg);
+  animation: rayMove 11s infinite alternate-reverse;
+}
+
+.ray:nth-child(3) {
+  right: 12%;
+  transform: rotate(15deg);
+  animation: rayMove 9s infinite alternate;
+}
+
+@keyframes rayMove {
+  from { opacity: .25; }
+  to { opacity: .75; }
+}
+
+/* ---------- BUBBLES ---------- */
+
+.bubbles span {
+  position: fixed;
+  bottom: -80px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(180, 247, 255, .65);
+  border-radius: 50%;
+  box-shadow:
+    inset -4px -4px 8px rgba(255,255,255,.08),
+    0 0 10px rgba(90,230,255,.25);
+  animation: bubbleRise linear infinite;
+  z-index: -2;
+}
+
+.bubbles span:nth-child(1) { left: 5%; animation-duration: 10s; }
+.bubbles span:nth-child(2) { left: 15%; width: 9px; height: 9px; animation-duration: 7s; }
+.bubbles span:nth-child(3) { left: 28%; width: 25px; height: 25px; animation-duration: 12s; }
+.bubbles span:nth-child(4) { left: 42%; animation-duration: 8s; }
+.bubbles span:nth-child(5) { left: 57%; width: 12px; height: 12px; animation-duration: 11s; }
+.bubbles span:nth-child(6) { left: 69%; width: 28px; height: 28px; animation-duration: 13s; }
+.bubbles span:nth-child(7) { left: 82%; animation-duration: 9s; }
+.bubbles span:nth-child(8) { left: 94%; width: 12px; height: 12px; animation-duration: 7s; }
+
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(0) translateX(0) scale(.6);
+    opacity: 0;
+  }
+  15% { opacity: 1; }
+  50% {
+    transform: translateY(-50vh) translateX(25px) scale(1);
+  }
+  100% {
+    transform: translateY(-115vh) translateX(-25px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* ---------- FISH ---------- */
+
+.fish {
+  position: fixed;
+  width: 55px;
+  height: 28px;
+  background: linear-gradient(135deg, #ffb33d, #e75d21);
+  border-radius: 60% 45% 45% 60%;
+  z-index: -3;
+  opacity: .8;
+  filter: drop-shadow(0 0 5px rgba(255,180,80,.3));
+}
+
+.fish::before {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 2px;
+  border-style: solid;
+  border-width: 12px 25px 12px 0;
+  border-color: transparent #e77929 transparent transparent;
+  transform: rotate(180deg);
+}
+
+.fish::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  left: 10px;
+  top: 7px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: inset 2px 0 #000;
+}
+
+.fish.one {
+  top: 30%;
+  left: -100px;
+  animation: swimOne 18s linear infinite;
+}
+
+.fish.two {
+  top: 52%;
+  left: -100px;
+  transform: scale(.65);
+  animation: swimTwo 24s linear infinite 4s;
+}
+
+.fish.three {
+  top: 70%;
+  left: -100px;
+  transform: scale(.8);
+  animation: swimThree 21s linear infinite 7s;
+}
+
+@keyframes swimOne {
+  0% { transform: translateX(-100px) scale(.8); }
+  45% { transform: translateX(55vw) translateY(-40px) scale(.8); }
+  100% { transform: translateX(115vw) translateY(20px) scale(.8); }
+}
+
+@keyframes swimTwo {
+  0% { transform: translateX(-100px) scale(.65); }
+  50% { transform: translateX(60vw) translateY(35px) scale(.65); }
+  100% { transform: translateX(115vw) translateY(-20px) scale(.65); }
+}
+
+@keyframes swimThree {
+  0% { transform: translateX(-100px) scale(.8); }
+  50% { transform: translateX(50vw) translateY(-30px) scale(.8); }
+  100% { transform: translateX(115vw) translateY(15px) scale(.8); }
+}
+
+/* ---------- CORAL / SEABED ---------- */
+
+.seabed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background:
+    radial-gradient(ellipse at 20% 100%, #174b48 0 15%, transparent 16%),
+    radial-gradient(ellipse at 45% 100%, #29584d 0 13%, transparent 14%),
+    radial-gradient(ellipse at 75% 100%, #17454d 0 18%, transparent 19%),
+    linear-gradient(transparent, #031b29);
+  z-index: -1;
+}
+
+/* ---------- CONTENT ---------- */
+
+header {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 20px;
+  position: relative;
+}
+
+.hero {
+  width: min(900px, 92%);
+  padding: 55px 30px;
+  background: rgba(1, 28, 54, .45);
+  border: 1px solid rgba(89, 234, 255, .3);
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 0 50px rgba(0, 190, 255, .1),
+    inset 0 0 30px rgba(255,255,255,.025);
+}
+
+.badge {
+  display: inline-block;
+  padding: 9px 18px;
+  border: 1px solid var(--cyan);
+  border-radius: 50px;
+  color: var(--cyan);
+  letter-spacing: 2px;
+  font-size: .8rem;
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-size: clamp(3rem, 10vw, 7rem);
+  line-height: 1;
+  margin-bottom: 25px;
+  text-shadow: 0 0 25px rgba(89,234,255,.35);
+}
+
+h1 span {
+  color: var(--cyan);
+}
+
+.hero p {
+  max-width: 750px;
+  margin: auto;
+  color: #cceef7;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+}
+
+.button {
+  display: inline-block;
+  margin-top: 35px;
+  padding: 14px 30px;
+  border: 1px solid var(--cyan);
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+  background: rgba(0, 180, 255, .1);
+  box-shadow: 0 0 20px rgba(89,234,255,.15);
+  transition: .3s;
+}
+
+.button:hover,
+.button:active {
+  background: var(--cyan);
+  color: #001321;
+  box-shadow: 0 0 35px rgba(89,234,255,.7);
+  transform: scale(1.05);
+}
+
+/* ---------- WAVE DIVIDER ---------- */
+
+.wave {
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.wave::before,
+.wave::after {
+  content: "";
+  position: absolute;
+  width: 180%;
+  height: 100px;
+  left: -40%;
+  border-radius: 45%;
+  border-top: 3px solid rgba(89,234,255,.7);
+  animation: waveMove 5s linear infinite;
+}
+
+.wave::before {
+  top: 35px;
+}
+
+.wave::after {
+  top: 45px;
+  opacity: .4;
+  animation-duration: 7s;
+}
+
+@keyframes waveMove {
+  from { transform: translateX(0) rotate(0deg); }
+  to { transform: translateX(8%) rotate(2deg); }
+}
+
+/* ---------- SKILLS ---------- */
+
+section.skills {
+  padding: 80px 20px 120px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: clamp(2.3rem, 6vw, 4rem);
+  margin-bottom: 50px;
+}
+
+.section-title span {
+  color: var(--cyan);
+}
+
+.skills-grid {
+  width: min(1100px, 92%);
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.card {
+  position: relative;
+  min-height: 230px;
+  padding: 35px 20px;
+  border-radius: 25px;
+  border: 1px solid rgba(89,234,255,.35);
+  background: rgba(1, 35, 65, .48);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  transition: .4s;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  left: -70px;
+  bottom: -100px;
+  background: rgba(89,234,255,.12);
+  animation: cardBubble 5s ease-in-out infinite;
+}
+
+.card:hover,
+.card:active {
+  transform: translateY(-12px);
+  border-color: var(--cyan);
+  box-shadow: 0 0 35px rgba(89,234,255,.22);
+}
+
+.icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 10px rgba(89,234,255,.5));
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  color: white;
+}
+
+.card p {
+  color: #a9dce9;
+  margin-top: 8px;
+  font-size: .9rem;
+}
+
+@keyframes cardBubble {
+  50% { transform: translate(50px,-30px); }
+}
+
+/* ---------- FOOTER ---------- */
+
+footer {
+  text-align: center;
+  padding: 80px 20px 40px;
+  background: rgba(0, 12, 28, .7);
+  border-top: 1px solid rgba(89,234,255,.2);
+}
+
+footer h2 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  margin-bottom: 15px;
+  text-shadow: 0 0 20px rgba(89,234,255,.3);
+}
+
+footer p {
+  color: #a9dce9;
+  margin-bottom: 30px;
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.social a {
+  min-width: 130px;
+  padding: 13px 25px;
+  border: 1px solid var(--cyan);
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+  background: rgba(0,150,220,.08);
+  transition: .3s;
+}
+
+.social a:hover,
+.social a:active {
+  background: var(--cyan);
+  color: #001321;
+  box-shadow: 0 0 25px rgba(89,234,255,.55);
+}
+
+.copy {
+  margin-top: 50px;
+  font-size: .8rem;
+  color: #638b98;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 800px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero {
+    padding: 45px 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-height: 190px;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .wave {
+    height: 70px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="ocean">
+<!-- LIVE OCEAN -->
+<div class="ocean">
+  <div class="ray"></div>
+  <div class="ray"></div>
+  <div class="ray"></div>
 
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-
-    <div class="touch-bubble"></div>
-
-    <section class="hero">
-
-      <div class="hero-content">
-
-        <div class="tag">COMPUTER SCIENCE STUDENT</div>
-
-        <h1>A <span>HEMALATHA</span></h1>
-
-        <p>
-          Computer Science student at Sri Ramakrishna College of Arts and Science,
-          passionate about software development and problem-solving.
-        </p>
-
-        <a href="#skills" class="explore">Dive Into My World</a>
-
-      </div>
-
-      <div class="waves">
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-      </div>
-
-    </section>
-
+  <div class="bubbles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 
+  <div class="fish one"></div>
+  <div class="fish two"></div>
+  <div class="fish three"></div>
 
-  <section class="skills" id="skills">
+  <div class="seabed"></div>
+</div>
 
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
+<!-- HERO -->
+<header>
+  <div class="hero">
+    <div class="badge">COMPUTER SCIENCE STUDENT</div>
 
-    <div class="container">
+    <h1>A <span>HEMALATHA</span></h1>
 
-      <h2 class="section-title">
-        My <span>Creative Skills</span>
-      </h2>
+    <p>
+      Computer Science student at Sri Ramakrishna College of Arts and Science,
+      passionate about software development and problem-solving.
+    </p>
 
-      <div class="skills-grid">
+    <a href="#skills" class="button">Explore My Skills 🌊</a>
+  </div>
+</header>
 
-        <div class="skill-card">
-          <div class="skill-icon">🎤</div>
-          <h3>Singing</h3>
-          <p>Voice &amp; Musical Expression</p>
-        </div>
+<div class="wave"></div>
 
-        <div class="skill-card">
-          <div class="skill-icon">💃</div>
-          <h3>Dancing</h3>
-          <p>Movement &amp; Performance</p>
-        </div>
+<!-- SKILLS -->
+<section class="skills" id="skills">
 
-        <div class="skill-card">
-          <div class="skill-icon">🎨</div>
-          <h3>Drawing</h3>
-          <p>Creativity &amp; Visual Art</p>
-        </div>
+  <h2 class="section-title">
+    My <span>Skills</span>
+  </h2>
 
-        <div class="skill-card">
-          <div class="skill-icon">✂️</div>
-          <h3>Editing</h3>
-          <p>Creative Digital Editing</p>
-        </div>
+  <div class="skills-grid">
 
-      </div>
-
+    <div class="card">
+      <div class="icon">🎤</div>
+      <h3>Singing</h3>
+      <p>Expressing creativity through music and voice.</p>
     </div>
 
-  </section>
-
-
-  <footer>
-
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-
-    <div class="container">
-
-      <h2>Connect with Me</h2>
-
-      <p>
-        Let's connect and explore creativity, technology and ideas together.
-      </p>
-
-      <div class="social-links">
-        <a href="#" aria-label="GitHub">GitHub</a>
-        <a href="#" aria-label="LinkedIn">LinkedIn</a>
-      </div>
-
-      <p class="copyright">
-        © 2026 A HEMALATHA. All rights reserved.
-      </p>
-
+    <div class="card">
+      <div class="icon">💃</div>
+      <h3>Dancing</h3>
+      <p>Movement, rhythm and creative expression.</p>
     </div>
 
-  </footer>
+    <div class="card">
+      <div class="icon">🎨</div>
+      <h3>Drawing</h3>
+      <p>Exploring ideas through art and imagination.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎬</div>
+      <h3>Editing</h3>
+      <p>Creating and polishing visual content creatively.</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="wave"></div>
+
+<!-- FOOTER -->
+<footer>
+
+  <h2>Connect with Me</h2>
+
+  <p>
+    Let's connect and explore creativity and technology together.
+  </p>
+
+  <div class="social">
+    <a href="#" aria-label="GitHub">GitHub</a>
+    <a href="#" aria-label="LinkedIn">LinkedIn</a>
+  </div>
+
+  <p class="copy">
+    © 2026 A HEMALATHA. All rights reserved.
+  </p>
+
+</footer>
 
 </body>
 </html>
